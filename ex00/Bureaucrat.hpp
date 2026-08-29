@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 00:32:03 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/28 22:13:18 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/08/29 16:24:26 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,11 @@ class Bureaucrat
 		void incrementGrade();
 		void decrementGrade();
 
-		class GradeTooHighException : public std::exception
-		{
+		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char *what() const throw();
 		};
-		class GradeTooLowException : public std::exception
-		{
+		class GradeTooLowException : public std::exception {
 			public:
 				virtual const char *what() const throw();
 		};

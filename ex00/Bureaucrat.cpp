@@ -6,11 +6,11 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 00:32:01 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/28 21:28:40 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/08/29 16:04:49 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+# include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(void) : name_("Unnamed"), grade_(150) {}
 
@@ -63,7 +63,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 std::ostream& operator<<(std::ostream &out, const Bureaucrat& bureaucrat)
 {
 	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
-	return out;
+	return (out);
 }
 
 const std::string& Bureaucrat::getName(void) const

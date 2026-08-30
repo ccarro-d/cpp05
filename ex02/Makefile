@@ -1,11 +1,11 @@
 
-NAME        = form
+NAME        = forms
 
 CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
 DEPFLAGS    = -MMD -MP
 
-SRC         = main.cpp Bureaucrat.cpp Form.cpp
+SRC         = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
 
 OBJDIR      = obj
 OBJ         = $(addprefix $(OBJDIR)/,$(SRC:.cpp=.o))
@@ -29,6 +29,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f *_shrubbery
 
 re: fclean all
 

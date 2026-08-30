@@ -6,12 +6,12 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 21:39:41 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/29 16:38:15 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/08/30 23:11:25 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Bureaucrat.hpp"
-# include "Form.hpp"
+# include "AForm.hpp"
 
 
 Bureaucrat::Bureaucrat(void) : name_("Unnamed"), grade_(150) {}
@@ -27,19 +27,19 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 }
 
 
-void Bureaucrat::checkMaxGrade(int grade) 
+void Bureaucrat::checkMaxGrade(int grade) const
 {
 	if (grade < maxGrade)
 		throw Bureaucrat::GradeTooHighException();
 }
 
-void Bureaucrat::checkMinGrade(int grade) 
+void Bureaucrat::checkMinGrade(int grade) const
 {
 	if (grade > minGrade)
 		throw Bureaucrat::GradeTooLowException();
 }
 
-void Bureaucrat::checkGrade(int grade) 
+void Bureaucrat::checkGrade(int grade) const
 {
 	checkMaxGrade(grade);
 	checkMinGrade(grade);
@@ -91,7 +91,7 @@ void Bureaucrat::decrementGrade()
 	grade_++;	
 }
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& form) const
 {
 	try
 	{
@@ -99,8 +99,23 @@ void Bureaucrat::signForm(Form& form)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << this->getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+		std::cout << name_ << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
 		return ;
 	}
-	std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	std::cout << name_ << " signed " << form.getName() << "." << std::endl;
+}
+
+void Bureaucrat::executeForm(const AForm& form) const
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << name_ << " couldn't execute form " << form.getName() << " because " << e.what() << std::endl;
+		return;
+	}
+	std::cout << name_ << " executed " << form.getName() << "." << std::endl;
+	
 }

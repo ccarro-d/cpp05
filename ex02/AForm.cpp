@@ -1,53 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 21:44:51 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/29 16:51:40 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/08/30 21:25:28 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Form.hpp"
+# include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
-const char *Form::GradeTooHighException::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high for this operation.");
 }
 
-const char *Form::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low for this operation.");
 }
 
-void	Form::checkMaxGrade(int grade)
+const char *AForm::NotSignedException::what() const throw()
+{
+	return ("Signature needed before execution.");
+}
+
+void	AForm::checkMaxGrade(int grade) const
 {
 	if (grade < 1)
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 }
 
-void	Form::checkMinGrade(int grade)
+void	AForm::checkMinGrade(int grade) const
 {
 	if (grade > 150)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 }
 
-void	Form::checkGrade(int grade)
+void	AForm::checkGrade(int grade) const
 {
 	checkMaxGrade(grade);
 	checkMinGrade(grade);
 }
 
-Form::Form(void)
+AForm::AForm(void)
 	: name_("Unnamed"),
 		isSigned_(false),
 		requiredGradeToSign_(150),
 		requiredGradeToExecute_(150) {}
 
-Form::Form(const std::string& name, int requiredGradeToSign, int requiredGradeToExecute)
+AForm::AForm(const std::string& name, int requiredGradeToSign, int requiredGradeToExecute)
 	: name_(name), isSigned_(false),
 		requiredGradeToSign_(requiredGradeToSign),
 		requiredGradeToExecute_(requiredGradeToExecute)
@@ -71,48 +76,58 @@ Form::Form(const std::string& name, int requiredGradeToSign, int requiredGradeTo
 	}
 }
 
-Form::Form(const Form& other)
+AForm::AForm(const AForm& other)
 	: name_(other.name_), isSigned_(other.isSigned_),
 		requiredGradeToSign_(other.requiredGradeToSign_),
 		requiredGradeToExecute_(other.requiredGradeToExecute_) {}
 
-Form& Form::operator=(const Form& other)
+AForm& AForm::operator=(const AForm& other)
 {
 	if (this != &other)
 		this->isSigned_ = other.isSigned_;
 	return (*this);
 }
 
-Form::~Form(void) {}
+AForm::~AForm(void) {}
 
-const std::string& Form::getName(void) const
+const std::string& AForm::getName(void) const
 {
 	return (name_);
 }
 
-bool Form::getSignatureStatus(void) const
+bool AForm::getSignatureStatus(void) const
 {
 	return (isSigned_);
 }
 
-int Form::getRequiredGradeToSign(void) const
+int AForm::getRequiredGradeToSign(void) const
 {
 	return (requiredGradeToSign_);
 }
 
-int Form::getRequiredGradeToExecute(void) const
+int AForm::getRequiredGradeToExecute(void) const
 {
 	return (requiredGradeToExecute_);
 }
 
-void Form::beSigned(const Bureaucrat& bureaucrat)
+void AForm::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->requiredGradeToSign_)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	this->isSigned_ = true;
 }
 
-std::ostream& operator<<(std::ostream& out, const Form& form)
+
+void AForm::execute(const Bureaucrat& executor) const
+{
+	if (isSigned_ == false)
+		throw AForm::NotSignedException();
+	if (requiredGradeToExecute_ < executor.getGrade())
+		throw AForm::GradeTooLowException();
+	performFormAction();
+}
+
+std::ostream& operator<<(std::ostream& out, const AForm& form)
 {
 	std::string	formSignatureStatus = "true";
 	if (form.getSignatureStatus() == false)

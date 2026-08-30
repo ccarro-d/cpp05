@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 21:44:51 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/29 16:51:40 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/08/30 11:22:43 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ const char *Form::GradeTooLowException::what() const throw()
 	return ("Grade too low for this operation.");
 }
 
-void	Form::checkMaxGrade(int grade)
+void	Form::checkMaxGrade(int grade) const
 {
 	if (grade < 1)
 		throw Form::GradeTooHighException();
 }
 
-void	Form::checkMinGrade(int grade)
+void	Form::checkMinGrade(int grade) const
 {
 	if (grade > 150)
 		throw Form::GradeTooLowException();
 }
 
-void	Form::checkGrade(int grade)
+void	Form::checkGrade(int grade) const
 {
 	checkMaxGrade(grade);
 	checkMinGrade(grade);

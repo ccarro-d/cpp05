@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 21:39:58 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/29 16:58:51 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/08/30 21:19:50 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,17 @@
 # include <string>
 # include <iostream>
 
-class	Form; // forward declaration porque solo utilizamos esta clase por referencia y en este punto el compilador no necesita saber cómo está construida la clase; únicamente necesita saber que ese tipo existe.
+class	AForm; // forward declaration porque solo utilizamos esta clase por referencia y en este punto el compilador no necesita saber cómo está construida la clase; únicamente necesita saber que ese tipo existe.
 
-class Bureaucrat
-{
+class Bureaucrat {
 	private:
 		const std::string name_;
 		int grade_;
 		static const int maxGrade = 1;
 		static const int minGrade = 150;
-		void checkMaxGrade(int grade);
-		void checkMinGrade(int grade);
-		void checkGrade(int grade);
+		void checkMaxGrade(int grade) const;
+		void checkMinGrade(int grade) const;
+		void checkGrade(int grade) const;
 
 	public:
 		Bureaucrat();
@@ -44,7 +43,8 @@ class Bureaucrat
 		void incrementGrade();
 		void decrementGrade();
 
-		void signForm(Form& form);
+		void signForm(AForm& form) const;
+		void executeForm(const AForm& form) const;
 
 		class GradeTooHighException : public std::exception {
 			public:

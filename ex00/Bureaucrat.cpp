@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 00:32:01 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/29 16:04:49 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/08/30 11:21:40 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Grade too low for this operation.");
 }
 
-void Bureaucrat::checkMaxGrade(int grade) 
+void Bureaucrat::checkMaxGrade(int grade) const
 {
 	if (grade < maxGrade)
 		throw Bureaucrat::GradeTooHighException();
 }
 
-void Bureaucrat::checkMinGrade(int grade) 
+void Bureaucrat::checkMinGrade(int grade) const
 {
 	if (grade > minGrade)
 		throw Bureaucrat::GradeTooLowException();
 }
 
-void Bureaucrat::checkGrade(int grade) 
+void Bureaucrat::checkGrade(int grade) const
 {
 	checkMaxGrade(grade);
 	checkMinGrade(grade);

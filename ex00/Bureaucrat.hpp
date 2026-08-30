@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 00:32:03 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/29 16:24:26 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/08/30 11:21:16 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,15 @@
 # include <string>
 # include <iostream>
 
-class Bureaucrat
-{
+class Bureaucrat {
 	private:
 		const std::string name_;
 		int grade_;
 		static const int maxGrade = 1;
 		static const int minGrade = 150;
-		void checkMaxGrade(int grade);
-		void checkMinGrade(int grade);
-		void checkGrade(int grade);
+		void checkMaxGrade(int grade) const;
+		void checkMinGrade(int grade) const;
+		void checkGrade(int grade) const;
 
 	public:
 		Bureaucrat();

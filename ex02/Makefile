@@ -5,7 +5,7 @@ CXX         = c++
 CXXFLAGS    = -Wall -Wextra -Werror -std=c++98
 DEPFLAGS    = -MMD -MP
 
-SRC         = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+SRC         = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
 OBJDIR      = obj
 OBJ         = $(addprefix $(OBJDIR)/,$(SRC:.cpp=.o))

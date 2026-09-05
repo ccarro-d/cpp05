@@ -1,5 +1,5 @@
 obj/main.o: main.cpp Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp \
-  RobotomyRequestForm.hpp PresidentialPardonForm.hpp Intern.hpp
+  RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
 Bureaucrat.hpp:
 
@@ -10,5 +10,3 @@ ShrubberyCreationForm.hpp:
 RobotomyRequestForm.hpp:
 
 PresidentialPardonForm.hpp:
-
-Intern.hpp:

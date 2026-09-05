@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 21:27:55 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/31 02:25:37 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/09/05 15:05:01 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,9 @@ void ShrubberyCreationForm::performFormAction() const
 	if (file.is_open() == false)
 		throw FailedOpenFileException();
 	writeAsciiTrees(file);
-	// file.close(); // Se podría poner, pero no es necesario ya que realmente se cierra solo al ejecutarse el destructor de "std::ofstream file" por terminar el cuerpo de la función
+	if (file.fail())
+		throw ""; // EXCEPCION POR HACER
+	file.close(); // Se podría poner, pero no es necesario ya que realmente se cierra solo al ejecutarse el destructor de "std::ofstream file" por terminar el cuerpo de la función
+	if (file.fail())
+		throw ""; // EXCEPCION POR HACER
 }

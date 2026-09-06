@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 21:27:38 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/31 01:49:45 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/09/06 17:24:11 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ class ShrubberyCreationForm : public AForm {
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 
 		class FailedOpenFileException : public std::exception {
+			public:
+				virtual const char *what() const throw();
+		};
+		class FailedWriteFileException : public std::exception {
 			public:
 				virtual const char *what() const throw();
 		};

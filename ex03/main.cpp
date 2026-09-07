@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ccarro-d <ccarro-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 21:40:12 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/09/05 12:43:42 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/09/07 22:43:59 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	main(void)
 	}
 
 	delete informeJefe;
+	delete robotito;
 	delete indultoPapa;
-	delete buscateLaVida;
 
 	return (0);
 }

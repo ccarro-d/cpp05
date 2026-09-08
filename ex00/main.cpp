@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 21:40:12 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/29 17:08:33 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:50:55 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;  // Se ejecutará
+		std::cerr << e.what() << std::endl;  // Se ejecutará
 	}
 	try
 	{
@@ -30,7 +30,7 @@ int	main(void)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;  // Se ejecutará
+		std::cerr << e.what() << std::endl;  // Se ejecutará
 	}
 	Bureaucrat juan("Juan", 1); // Válido
 	std::cout << juan << " Valid bureaucrat." << std::endl; // Se ejecutará
@@ -41,7 +41,7 @@ int	main(void)
 	}
 	catch (const std::exception& e) // Se ejecutará
 	{
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	Bureaucrat charo("Charo", 150); // Válido
 	std::cout << charo << " Valid bureaucrat." << std::endl; // Se ejecutará
@@ -52,7 +52,7 @@ int	main(void)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << e.what() << std::endl; // Se ejecutará
+		std::cerr << e.what() << std::endl; // Se ejecutará
 	}
 	Bureaucrat paco("Paco", 2); // Válido
 	std::cout << paco << " Valid bureaucrat." << std::endl; // Se ejecutará
@@ -63,7 +63,7 @@ int	main(void)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << e.what() << std::endl; // No se ejecutará
+		std::cerr << e.what() << std::endl; // No se ejecutará
 	}
 	Bureaucrat carmen("Carmen", 149); // Válido
 	std::cout << carmen << " Valid bureaucrat." << std::endl; // Se ejecutará
@@ -74,7 +74,7 @@ int	main(void)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << e.what() << std::endl; // No se ejecutará
+		std::cerr << e.what() << std::endl; // No se ejecutará
 	}
 	return (0);
 }

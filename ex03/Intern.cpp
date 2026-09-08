@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 00:54:59 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/09/04 20:53:23 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/09/08 22:04:04 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& targetNa
 		if (formName == forms[i])
 			return((this->*functionsPtr[i])(targetName));		
 	}
-	std::cout << "Inexistent form type: " << formName << std::endl;
+	std::cerr << "Inexistent form type: " << formName << std::endl;
 	return (NULL);
 }

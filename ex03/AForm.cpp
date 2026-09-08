@@ -6,7 +6,7 @@
 /*   By: ccarro-d <ccarro-d@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 21:44:51 by ccarro-d          #+#    #+#             */
-/*   Updated: 2026/08/30 21:25:28 by ccarro-d         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:54:30 by ccarro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ AForm::AForm(const std::string& name, int requiredGradeToSign, int requiredGrade
 	}
 	catch (const std::exception&) // no damos nombre "e" de variable porque no lo usaremos y se quejaría -Werror
 	{
-		std::cout << "Problem with requiredGradeToSign. ";
+		std::cerr << "Problem with requiredGradeToSign. ";
 		throw; // vuelve a lanzar la excepción que estamos manejando
 	}
 	try
@@ -71,7 +71,7 @@ AForm::AForm(const std::string& name, int requiredGradeToSign, int requiredGrade
 	}
 	catch (const std::exception&) // no damos nombre "e" de variable porque no lo usaremos y se quejaría -Werror
 	{
-		std::cout << "Problem with requiredGradeToExecute. ";
+		std::cerr << "Problem with requiredGradeToExecute. ";
 		throw; // vuelve a lanzar la excepción que estamos manejando
 	}
 }
